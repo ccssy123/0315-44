@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <div class="wrepper">
+        <!------header start-------->
+        <header class="header">
+            <div class="navbar">
+                <div class="container">
+                    <a href="#!" class="logo">高遠山社區</a>
+                    <ul class="menu">
+                        <li class="menu-item-2">
+                            <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+                                <input type="text" placeholder="搜尋店家.." name="search2">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </li>
+                        <li class="menu-item">
+                            <a href="" class="menu-link">
+                                <div class="txt-2">高遠山海味</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="" class="menu-link">
+                                <div class="txt-2">高遠山海情</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="" class="menu-link">
+                                <div class="txt-2">高遠山海觀</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="" class="menu-link">
+                                <img src="image/Artboard Copy@3x.png">
+                                <div class="txt">會員註冊</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="" class="menu-link">
+                                <img src="image/Artboard@3x.png">
+                                <div class="txt">會員登入</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="" class="menu-link">
+                                <img src="image/Artboard Copy 2@3x.png">
+                                <div class="txt">購物車</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <!------header end-------->
+        <section class="main">
+            <!----------shopping cart start--------------->
+            <div class="shopping-cart-intro">
+                <div class="container">
+                    <div class="shopping-cart-intro-item">
+                        <div class="shopping-cart hero-meal-list">
+                            <div class="row">
+                                <div class="col-1-2">
+                                    <div class="image-container">
+                                        <div class="image" style="background-image: url(image/便當5.jpg);"></div>
+                                    </div>
+                                </div>
+                                <div class="col-1-2">
+                                    <div class="title">
+                                        <h6>福隆鄉野便當</h6>
+                                    </div>
+                                    <div class="subtitle-2">
+                                        <h6>• 分享點餐：</h6>
+                                    </div>
+                                    <img src="image/fb.png">
+                                    <img src="image/line.png">
+                                    <div class="subtitle">
+                                        <h6>• 數量</h6>
+                                        <button class="btn" onclick="getnum('-');">-</button>
+                                            <input value="1" type="text" name="num" id="num" onkeyup="chknum();">
+                                            <button class="btn" onclick="getnum('+');">+</button>
+                                    </div>
+                                    <div class="subtitle-3">
+                                        <h6>• 價錢</h6>
+                                    </div>
+                                    <div class="price">
+                                        <h6>NT$200</h6>
+                                    </div>
+                                    <a href="#" class="btn-1 btn-shopping-cart">加入購物車</a>
+                                    <a href="#" class="btn-1 btn-shopping-cart">立即購買</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-intro">
+
+                        <div class="slogan">
+                            <div class="section-intro">
+                                <div class="title-1">
+                                    <h4>{ 餐點介紹 }</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="image-container">
+                                    <div class="image" style="background-image: url(image/便當_11.jpg);"></div>
+                                </div>
+                        <div class="description">
+                            <p>已經有超過半世紀歷史的福隆便當，經過了菜色的不斷改進與變化， 現在多是固定以米飯搭配兩塊滷肉、炒青菜、滷蛋、豆干、香腸等配料販售。</p>
+                        </div>
+
+                </div>
+            </div>
+    </div>
+    <!----------Store-intro end--------------->
+    <!-------footer start-------->
+    <footer class="copyright">
+        <p>© Copyright 2019 All rights reserved</p>
+    </footer>
+    </section>
+    </div>
+</body>
+<script src="vender/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+function getnum(t) {
+    if (t == "+") {
+        document.getElementById('num').value = parseInt(document.getElementById('num').value) + 1;
+    } else {
+        document.getElementById('num').value = parseInt(document.getElementById('num').value) - 1;
+    }
+    chknum();
+}
+
+function chknum() {
+    var maxnum = 99;
+    var minnum = 1;
+    var nownum = document.getElementById('num').value;
+
+    var stock = document.getElementById('stock').value;
+    if (parseInt(maxnum) > parseInt(stock)) {
+        maxnum = (stock > 0 ? stock : 1);
+    }
+
+    var r = /^[0-9]*[1-9][0-9]*$/;
+    if (!r.test(nownum)) {
+        document.getElementById('num').value = minnum;
+    }
+    if (parseInt(nownum) < parseInt(minnum)) {
+        document.getElementById('num').value = minnum;
+    }
+    if (parseInt(nownum) > parseInt(maxnum)) {
+        document.getElementById('num').value = maxnum;
+    }
+}
+</script>
+</html>
+
+
+
+
+
